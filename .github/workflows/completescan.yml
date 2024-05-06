@@ -4,6 +4,7 @@ on: push
 jobs:
   build:
     runs-on: ubuntu-latest
+    name: SonarQube
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 17
@@ -19,6 +20,7 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   security:
     runs-on: ubuntu-latest
+    name: Snyk                              
     steps:
       - uses: actions/checkout@master
       - name: Run Snyk to check for vulnerabilities
@@ -28,7 +30,7 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
   zap_scan:
     runs-on: ubuntu-latest
-    name: Owasp - Run DAST scan on the web application
+    name: Owasp - DAST
     steps:
       - name: Checkout
         uses: actions/checkout@v2

@@ -12,7 +12,7 @@ jobs:
         java-version: '17'
         distribution: 'adopt'
         cache: maven
-    - name: Build with Maven cloud
+    - name: SonarQube - Build with Maven cloud
       run:  mvn -B verify sonar:sonar -Dsonar.projectKey=nbsorg_javareachabilityplayground -Dsonar.organization=nbsorg -Dsonar.host.url=https://sonarcloud.io -Dsonar.token=$SONAR_TOKEN
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -28,7 +28,7 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
   zap_scan:
     runs-on: ubuntu-latest
-    name: Run DAST scan on the web application
+    name: Owasp - Run DAST scan on the web application
     steps:
       - name: Checkout
         uses: actions/checkout@v2

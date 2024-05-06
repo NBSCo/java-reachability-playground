@@ -41,4 +41,5 @@ jobs:
           target: 'http://testphp.vulnweb.com/'
           rules_file_name: '.zap/rules.tsv'
           cmd_options: '-a'
+          artifact_name: zap_scan
           continue-on-error: true
